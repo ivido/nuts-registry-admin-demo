@@ -20,6 +20,10 @@
       <label for="customerDomainInput">Domain</label>
       <input type="text" v-model="localValue.domain" id="customerDomainInput">
     </div>
+    <div>
+      <label for="customerAgbInput">AGB</label>
+      <input type="text" v-model="localValue.agb" id="customerAgbInput">
+    </div>
     <div v-if="mode==='edit'">
       <label class="flex justify-start items-start" for="customerActiveInput">
         <div

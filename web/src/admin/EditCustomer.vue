@@ -49,6 +49,7 @@ export default {
         name: '',
         city: '',
         domain: '',
+        agb: '',
         active: false
       },
       availableServices: [],

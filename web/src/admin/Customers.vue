@@ -23,6 +23,7 @@
         <thead>
         <tr>
           <th class="thead">Customer ID</th>
+          <th class="thead">AGB</th>
           <th class="thead">Name</th>
           <th class="thead">City</th>
           <th class="thead">Published</th>
@@ -31,8 +32,9 @@
         <tbody class="tbody">
         <tr class="hover:bg-gray-100 cursor-pointer"
             @click="$router.push({name: 'admin.editCustomer', params: {id} })"
-            v-for="{id, name, city, active} in customers" :key="id">
+            v-for="{id, agb, name, city, active} in customers" :key="id">
           <td class="tcell">{{ id }}</td>
+          <td class="tcell">{{ agb }}</td>
           <td class="tcell">{{ name }}</td>
           <td class="tcell">{{ city }}</td>
           <td class="tcell">{{ active }}</td>

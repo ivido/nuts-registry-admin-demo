@@ -36,6 +36,7 @@ func (s Service) ConnectCustomer(reqCustomer domain.Customer, serviceProviderID 
 		Name:   reqCustomer.Name,
 		City:   reqCustomer.City,
 		Domain: reqCustomer.Domain,
+		Agb:    reqCustomer.Agb,
 	}
 
 	return s.Repository.NewCustomer(customer)

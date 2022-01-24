@@ -38,6 +38,9 @@ type Customer struct {
 	// If a VC has been issued for this customer.
 	Active bool `json:"active"`
 
+    // AGB code of the organization
+    Agb string `json:"agb"`
+
 	// Locality for this customer.
 	City *string `json:"city,omitempty"`
 

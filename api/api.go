@@ -114,6 +114,7 @@ func (w Wrapper) UpdateCustomer(ctx echo.Context, id int) error {
 		c.Name = req.Name
 		c.City = req.City
 		c.Domain = req.Domain
+		c.Agb = req.Agb
 		if err := w.CredentialService.ManageNutsOrgCredential(c, req.Active); err != nil {
 			return nil, err
 		}
