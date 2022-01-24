@@ -39,7 +39,7 @@ type Customer struct {
 	Active bool `json:"active"`
 
     // AGB code of the organization
-    Agb string `json:"agb"`
+    Agb *string `json:"agb,omitempty"`
 
 	// Locality for this customer.
 	City *string `json:"city,omitempty"`

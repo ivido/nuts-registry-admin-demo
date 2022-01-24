@@ -56,10 +56,15 @@ func (s Service) ManageNutsOrgCredential(customer domain.Customer, shouldHaveCre
 		return fmt.Errorf("customer.City must be set for issuing a credential")
 	}
 
+	if customer.Agb == nil {
+		return fmt.Errorf("customer.Agb must be set for issuing a credential")
+	}
+
 	// Is there a single credential issued with the exact same organization / city name? Then we don't have to do anything
 	if len(credentials) == 1 &&
 		credentials[0].Organization.Name == customer.Name &&
-		credentials[0].Organization.City == *customer.City {
+		credentials[0].Organization.City == *customer.City &&
+		credentials[0].Organization.Agb == *customer.Agb {
 		return nil
 	}
 
@@ -205,7 +210,7 @@ func (s Service) issueNutsOrgCredential(customer domain.Customer) error {
 		return err
 	}
 
-	logrus.Infof("Issuing NutsOrganizationCredential (did=%s,name=%s,city=%s)", *customer.Did, customer.Name, *customer.City)
+	logrus.Infof("Issuing NutsOrganizationCredential (did=%s,name=%s,city=%s,agb=%s)", *customer.Did, customer.Name, *customer.City, *customer.Agb)
 
 	issuerURI, _ := ssi.ParseURI(vendorDID.Id)
 	typeURI, _ := ssi.ParseURI("NutsOrganizationCredential")
@@ -213,6 +218,7 @@ func (s Service) issueNutsOrgCredential(customer domain.Customer) error {
 	credentialSubject = append(credentialSubject, domain.NutsOrganizationCredentialSubject{ID: *customer.Did, Organization: domain.Organization{
 		Name: customer.Name,
 		City: *customer.City,
+		Agb:  *customer.Agb,
 	}})
 	requestBody := vcrApi.CreateJSONRequestBody{
 		Type:              []ssi.URI{*typeURI},

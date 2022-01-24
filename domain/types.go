@@ -27,6 +27,7 @@ type NutsOrganizationCredentialSubject struct {
 type Organization struct {
 	Name string `json:"name"`
 	City string `json:"city"`
+	Agb  string `json:"agb"`
 }
 
 const NutsCommService = "NutsComm"
